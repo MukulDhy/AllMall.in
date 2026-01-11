@@ -5,7 +5,6 @@ const sendToken = require("../utils/jwtToken");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
 const cloudinary = require("cloudinary");
-const { send } = require("process");
 
 // Register a User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
