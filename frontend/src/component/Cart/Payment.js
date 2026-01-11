@@ -12,12 +12,12 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 
-import axios from "axios";
 import "./payment.css";
 import CreditCardIcon from "@material-ui/icons/CreditCard";
 import EventIcon from "@material-ui/icons/Event";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import { createOrder, clearErrors } from "../../actions/orderAction";
+import { api } from "../../service/api";
 
 const Payment = ({ history }) => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
@@ -56,8 +56,8 @@ const Payment = ({ history }) => {
           "Content-Type": "application/json",
         },
       };
-      const { data } = await axios.post(
-        "https://allmall-in.onrender.com/api/v1/payment/process",
+      const { data } = await api.post(
+        `/api/v1/payment/process`,
         paymentData,
         config
       );

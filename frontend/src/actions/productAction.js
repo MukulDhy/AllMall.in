@@ -1,4 +1,3 @@
-import axios from "axios";
 
 import {
   ALL_PRODUCT_FAIL,
@@ -30,6 +29,7 @@ import {
   DELETE_REVIEW_FAIL,
   CLEAR_ERRORS,
 } from "../constants/productConstants";
+import { api } from "../service/api";
 
 // Get All Products
 export const getProduct =
@@ -38,13 +38,13 @@ export const getProduct =
     try {
       dispatch({ type: ALL_PRODUCT_REQUEST });
 
-      let link = `https://allmall-in.onrender.com/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
+      let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
 
       if (category) {
-        link = `https://allmall-in.onrender.com/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
+        link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
       }
 
-      const { data } = await axios.get(link);
+      const { data } = await api.get(link);
 
       dispatch({
         type: ALL_PRODUCT_SUCCESS,
@@ -63,8 +63,8 @@ export const getAdminProduct = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PRODUCT_REQUEST });
 
-    const { data } = await axios.get(
-      "https://allmall-in.onrender.com/api/v1/admin/products"
+    const { data } = await api.get(
+      "/api/v1/admin/products"
     );
 
     dispatch({
@@ -88,8 +88,8 @@ export const createProduct = (productData) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },
     };
 
-    const { data } = await axios.post(
-      `https://allmall-in.onrender.com/api/v1/admin/product/new`,
+    const { data } = await api.post(
+      `/api/v1/admin/product/new`,
       productData,
       config
     );
@@ -115,8 +115,8 @@ export const updateProduct = (id, productData) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },
     };
 
-    const { data } = await axios.put(
-      `https://allmall-in.onrender.com/api/v1/admin/product/${id}`,
+    const { data } = await api.put(
+      `/api/v1/admin/product/${id}`,
       productData,
       config
     );
@@ -138,8 +138,8 @@ export const deleteProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_PRODUCT_REQUEST });
 
-    const { data } = await axios.delete(
-      `https://allmall-in.onrender.com/api/v1/admin/product/${id}`
+    const { data } = await api.delete(
+      `/api/v1/admin/product/${id}`
     );
 
     dispatch({
@@ -159,8 +159,8 @@ export const getProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
 
-    const { data } = await axios.get(
-      `https://allmall-in.onrender.com/api/v1/product/${id}`
+    const { data } = await api.get(
+      `/api/v1/product/${id}`
     );
 
     dispatch({
@@ -184,8 +184,8 @@ export const newReview = (reviewData) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },
     };
 
-    const { data } = await axios.put(
-      `https://allmall-in.onrender.com/api/v1/review`,
+    const { data } = await api.put(
+      `/api/v1/review`,
       reviewData,
       config
     );
@@ -207,8 +207,8 @@ export const getAllReviews = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_REVIEW_REQUEST });
 
-    const { data } = await axios.get(
-      `https://allmall-in.onrender.com/api/v1/reviews?id=${id}`
+    const { data } = await api.get(
+      `/api/v1/reviews?id=${id}`
     );
 
     dispatch({
@@ -228,8 +228,8 @@ export const deleteReviews = (reviewId, productId) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_REVIEW_REQUEST });
 
-    const { data } = await axios.delete(
-      `https://allmall-in.onrender.com/api/v1/reviews?id=${reviewId}&productId=${productId}`
+    const { data } = await api.delete(
+      `/api/v1/reviews?id=${reviewId}&productId=${productId}`
     );
 
     dispatch({
