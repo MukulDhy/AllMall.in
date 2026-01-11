@@ -2,6 +2,7 @@ const ErrorHander = require("../utils/errorhander");
 const catchAsyncErrors = require("./catchAsyncErrors");
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
+const ErrorHandler = require("../utils/errorhander");
 
 exports.isAuthenticatedUser = catchAsyncErrors(async (req, res, next) => {
   // Try to get token from multiple sources
