@@ -37,9 +37,9 @@ exports.isAuthenticatedUser = catchAsyncErrors(async (req, res, next) => {
     }
 
     // Check if user is active
-    if (user.status !== "active") {
-      return next(new ErrorHandler("User account is deactivated", 403));
-    }
+    // if (user.status !== "active") {
+    //   return next(new ErrorHandler("User account is deactivated", 403));
+    // }
 
     // Attach user to request
     req.user = user;

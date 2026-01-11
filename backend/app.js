@@ -6,7 +6,7 @@ const fileUpload = require("express-fileupload");
 const path = require("path");
 const cors = require("cors");
 const errorMiddleware = require("./middleware/error");
-
+const morganLogger = require("./middleware/morganLogger");
 // Config
 if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({ path: "backend/config/config.env" });
@@ -22,6 +22,8 @@ const product = require("./routes/productRoute");
 const user = require("./routes/userRoute");
 const order = require("./routes/orderRoute");
 const payment = require("./routes/paymentRoute");
+
+app.use(morganLogger);
 
 app.use("/api/v1", product);
 app.use("/api/v1", user);

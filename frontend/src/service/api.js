@@ -1,7 +1,8 @@
 import axios from "axios";
 // import { API_URL } from "/config/API_URL";
 
-const BASE_URL = "https://allmall-in.onrender.com";
+const BASE_URL = "http://localhost:4000";
+// const BASE_URL = "https://allmall-in.onrender.com";
 
 export const api = axios.create({
   baseURL: BASE_URL,
