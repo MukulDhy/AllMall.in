@@ -23,3 +23,6 @@
 [2026-01-12 04:04:25] INFO: GET /api/v1/admin/users 304 84.822 ms - ::1
 [2026-01-12 04:05:28] INFO: GET /api/v1/stripeapikey 304 356.603 ms - ::1
 [2026-01-12 04:05:28] INFO: GET /api/v1/me 200 413.228 ms - ::1
+[2026-01-12 04:07:56] INFO: GET /api/v1/admin/products 304 130.161 ms - ::1
+[2026-01-12 04:07:56] INFO: GET /api/v1/admin/orders 304 139.321 ms - ::1
+[2026-01-12 04:07:56] INFO: GET /api/v1/admin/users 304 159.328 ms - ::1
